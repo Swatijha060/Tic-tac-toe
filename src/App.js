@@ -50,7 +50,7 @@ const App = () => {
       }
     }
 
-    // Step 3: Change active player
+    // Step 3: Change the  active player
     setXPlaying(!xPlaying);
   }
 
