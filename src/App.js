@@ -3,10 +3,9 @@ import React, { useState } from "react";
 import { Board } from "./Components/Board";
 import { ResetButton } from "./Components/ResetButton";
 import { ScoreBoard } from "./Components/ScoreBoard";
-import './App.css';
+import "./App.css";
 
 const App = () => {
-
   const WIN_CONDITIONS = [
     [0, 1, 2],
     [3, 4, 5],
@@ -15,12 +14,12 @@ const App = () => {
     [1, 4, 7],
     [2, 5, 8],
     [0, 4, 8],
-    [2, 4, 6]
-  ]
+    [2, 4, 6],
+  ];
 
   const [xPlaying, setXPlaying] = useState(true);
-  const [board, setBoard] = useState(Array(9).fill(null))
-  const [scores, setScores] = useState({ xScore: 0, oScore: 0 })
+  const [board, setBoard] = useState(Array(9).fill(null));
+  const [scores, setScores] = useState({ xScore: 0, oScore: 0 });
   const [gameOver, setGameOver] = useState(false);
 
   const handleBoxClick = (boxIdx) => {
@@ -31,7 +30,7 @@ const App = () => {
       } else {
         return value;
       }
-    })
+    });
 
     setBoard(updatedBoard);
 
@@ -42,17 +41,17 @@ const App = () => {
       if (winner === "O") {
         let { oScore } = scores;
         oScore += 1;
-        setScores({ ...scores, oScore })
+        setScores({ ...scores, oScore });
       } else {
         let { xScore } = scores;
         xScore += 1;
-        setScores({ ...scores, xScore })
+        setScores({ ...scores, xScore });
       }
     }
 
     // Step 3: Change the  active player
     setXPlaying(!xPlaying);
-  }
+  };
 
   const checkWinner = (board) => {
     for (let i = 0; i < WIN_CONDITIONS.length; i++) {
@@ -64,12 +63,12 @@ const App = () => {
         return board[x];
       }
     }
-  }
+  };
 
   const resetBoard = () => {
     setGameOver(false);
     setBoard(Array(9).fill(null));
-  }
+  };
 
   return (
     <div className="App">
@@ -78,6 +77,6 @@ const App = () => {
       <ResetButton resetBoard={resetBoard} />
     </div>
   );
-}
+};
 
 export default App;
